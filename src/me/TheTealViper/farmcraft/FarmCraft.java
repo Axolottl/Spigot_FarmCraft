@@ -58,7 +58,8 @@ public class FarmCraft extends JavaPlugin implements Listener{
         //getLogger().info("FarmCraft from TheTealViper shutting down. Bshzzzzzz");
     }
    
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
+    @SuppressWarnings("deprecation")
+	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
         if(sender instanceof Player){
             Player p = (Player) sender;
             boolean explain = false;
@@ -230,7 +231,8 @@ public class FarmCraft extends JavaPlugin implements Listener{
         return false;
     }
     
-    @EventHandler
+    @SuppressWarnings("deprecation")
+	@EventHandler
     public void onPlant(PlayerInteractEvent e){
     	if(e.getAction().equals(Action.RIGHT_CLICK_BLOCK) && e.getClickedBlock().getType().equals(Material.FARMLAND)){
     		for(String cropName : cropMap.keySet()){
@@ -429,9 +431,11 @@ public class FarmCraft extends JavaPlugin implements Listener{
     	}
     }
     
-    public static void setSkullUrl(String skinUrl, Block block) {
+    @SuppressWarnings("deprecation")
+	public static void setSkullUrl(String skinUrl, Block block) {
         block.setType(Material.PLAYER_HEAD);
-        Skull skullData = (Skull)block.getState();
+        @SuppressWarnings("unused")
+		Skull skullData = (Skull)block.getState();
         try{
 	        Object reflectWorld = ReflectionUtils.invokeMethod(block, "getWorld");
 	        Object reflectHandle = ReflectionUtils.invokeMethod(reflectWorld, "getHandle");
